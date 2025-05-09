@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Đơn giá";
+}
+
+<div class="container mx-auto py-8">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Bảng Đơn Giá Dịch Vụ Sửa Chữa Nhà</h2>
+    <p class="mb-4 text-gray-700 text-center">Dưới đây là bảng đơn giá tham khảo cho một số dịch vụ sửa chữa nhà phổ biến của chúng tôi. Xin lưu ý rằng giá cả có thể thay đổi tùy thuộc vào quy mô công việc, vật liệu sử dụng và các yêu cầu cụ thể. Để có báo giá chi tiết và chính xác nhất, vui lòng liên hệ trực tiếp với chúng tôi.</p>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300 shadow-md rounded-lg">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="py-3 px-6 text-left font-semibold text-gray-700 uppercase tracking-wider">Dịch vụ</th>
+                    <th class="py-3 px-6 text-left font-semibold text-gray-700 uppercase tracking-wider">Đơn vị</th>
+                    <th class="py-3 px-6 text-right font-semibold text-gray-700 uppercase tracking-wider">Đơn giá (VNĐ)</th>
+                    <th class="py-3 px-6 text-center font-semibold text-gray-700 uppercase tracking-wider">Ghi chú</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Sửa chữa điện (ổ cắm, công tắc, bóng đèn)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">Cái/Lần</td>
+                    <td class="py-4 px-6 text-right">50.000 - 150.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Tùy độ phức tạp và số lượng</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Sửa chữa đường ống nước (rò rỉ nhỏ)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">Lần</td>
+                    <td class="py-4 px-6 text-right">150.000 - 300.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Chưa bao gồm vật tư</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Thông tắc cống nghẹt (bồn cầu, chậu rửa)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">Lần</td>
+                    <td class="py-4 px-6 text-right">200.000 - 400.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Tùy mức độ tắc nghẽn</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Sơn tường (1 lớp, nhân công)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">m²</td>
+                    <td class="py-4 px-6 text-right">30.000 - 50.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Chưa bao gồm vật liệu</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Ốp lát gạch nền, tường (nhân công)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">m²</td>
+                    <td class="py-4 px-6 text-right">80.000 - 150.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Tùy loại gạch và độ phức tạp</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Chống thấm dột (mái, tường, nhà vệ sinh)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">m² / Lần</td>
+                    <td class="py-4 px-6 text-right">150.000 - 300.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Khảo sát và báo giá chi tiết</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Lắp đặt thiết bị vệ sinh (bồn cầu, lavabo)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">Cái</td>
+                    <td class="py-4 px-6 text-right">100.000 - 250.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Tùy loại thiết bị</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <td class="py-4 px-6 whitespace-nowrap">Tháo dỡ nhà cũ (tường, sàn)</td>
+                    <td class="py-4 px-6 whitespace-nowrap">m²</td>
+                    <td class="py-4 px-6 text-right">50.000 - 100.000</td>
+                    <td class="py-4 px-6 text-center text-gray-500">Tùy kết cấu</td>
+                </tr>
+                <tr>
+                    <td class="py-4 px-6 whitespace-nowrap">Tư vấn và khảo sát công trình</td>
+                    <td class="py-4 px-6 whitespace-nowrap">Lần</td>
+                    <td class="py-4 px-6 text-right">Miễn phí</td>
+                    <td class="py-4 px-6 text-center text-green-500 font-semibold">Liên hệ ngay</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-8 text-gray-600">
+        <p class="italic">Lưu ý:</p>
+        <ul class="list-disc pl-5">
+            <li>Bảng giá trên chỉ mang tính chất tham khảo và có thể thay đổi tùy thuộc vào tình hình thực tế của công trình.</li>
+            <li>Giá chưa bao gồm chi phí vật tư (trừ khi có ghi chú khác).</li>
+            <li>Để nhận được báo giá chi tiết và chính xác nhất, quý khách vui lòng liên hệ trực tiếp với chúng tôi qua hotline hoặc email.</li>
+        </ul>
+    </div>
+</div>

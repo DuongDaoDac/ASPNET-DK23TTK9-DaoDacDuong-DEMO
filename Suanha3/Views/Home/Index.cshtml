@@ -1,0 +1,256 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Xây dựng 347 - Trang Chủ</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Dropdown on hover */
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+        /* Hero slider height */
+        .hero-carousel .carousel-item {
+            height: 500px;
+        }
+
+            .hero-carousel .carousel-item img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+            }
+        /* Banner for services page */
+        .breadcrumb-bg {
+            background: url('services-banner.jpg') no-repeat center/cover;
+            height: 600px;
+        }
+        /* Hide admin section until authenticated */
+        #admin {
+            display: none;
+        }
+
+        .hero-carousel .carousel-item {
+            height: 100vh; /* Full màn hình */
+        }
+
+        .video-fit {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex items-center justify-between py-4">
+            <a href="#" class="flex items-center">
+                <img src="https://i.imgur.com/K2PwB7N.png" alt="Xây dựng 347" class="h-10">
+                <span class="ml-2 text-xl font-bold text-gray-800">Xây Dựng 347</span>
+            </a>
+            <nav class="hidden md:flex space-x-6">
+                <div class="group relative">
+                    <a href="#about" class="text-gray-700 hover:text-blue-600">Giới Thiệu</a>
+                    <ul class="absolute hidden bg-white shadow-lg mt-2 rounded group-hover:block">
+                        <li><a href="#about" class="block px-4 py-2 hover:bg-gray-100">Giới thiệu công ty</a></li>
+                        <li><a href="#services" class="block px-4 py-2 hover:bg-gray-100">Dịch vụ</a></li>
+                        <li><a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="group relative">
+                    <a href="#services" class="text-gray-700 hover:text-blue-600">Dịch Vụ</a>
+                    <ul class="absolute hidden bg-white shadow-lg mt-2 rounded group-hover:block">
+                        <li><a href="#construction-hn" class="block px-4 py-2 hover:bg-gray-100">Thi Công Nhà Phố</a></li>
+                        <li><a href="#construction-hotel" class="block px-4 py-2 hover:bg-gray-100">Thi Công Khách Sạn</a></li>
+                        <li><a href="#construction-factory" class="block px-4 py-2 hover:bg-gray-100">Thi Công Nhà Xưởng</a></li>
+                        <li><a href="#construction-interior" class="block px-4 py-2 hover:bg-gray-100">Thi Công Nội Thất Nhà Phố</a></li>
+                    </ul>
+                </div>
+                <a href="#pricing" class="text-gray-700 hover:text-blue-600">Bảng Giá</a>
+                <a href="#projects" class="text-gray-700 hover:text-blue-600">Dự Án</a>
+            </nav>
+            <button class="md:hidden text-gray-700" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse" id="mobileMenu">
+            <nav class="px-4 pb-4 space-y-2">
+                <a href="#" class="block text-gray-700">Trang Chủ</a>
+                <a href="#about" class="block text-gray-700">Giới Thiệu</a>
+                <a href="#services" class="block text-gray-700">Dịch Vụ</a>
+                <a href="#pricing" class="block text-gray-700">Bảng Giá</a>
+                <a href="#projects" class="block text-gray-700">Dự Án</a>
+                <a href="#news" class="block text-gray-700">Tin Tức</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero-carousel carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <video class="d-block w-100 video-fit" autoplay muted loop playsinline>
+                    <source src="https://i.imgur.com/HiIf8Un.mp4" type="video/mp4">
+                    Trình duyệt của bạn không hỗ trợ video.
+                </video>
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 class="display-5">Xây Nhà Trọn Gói 2025</h2>
+                    <p>Đảm bảo chất lượng - Tiến độ - Giá cạnh tranh</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="slide2.jpg" alt="Sửa chữa nhà phố" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 class="display-5">Sửa Chữa Nhà 24H</h2>
+                    <p>Nhanh chóng - Chuyên nghiệp - Uy tín</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target=".hero-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target=".hero-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </section>
+    <main class="container mx-auto flex-grow">
+        <!-- About -->
+        <section id="about" class="py-12">
+            <h2 class="text-3xl font-bold mb-6">Giới Thiệu</h2>
+            <p>Công ty Xây Dựng 347 chuyên cung cấp dịch vụ sửa chữa, cải tạo nhà trọn gói trên toàn quốc với hơn 10 năm kinh nghiệm. Chúng tôi cam kết:</p>
+            <ul class="list-disc list-inside mt-4">
+                <li>Đội ngũ kỹ sư, thợ lành nghề</li>
+                <li>Thiết bị, máy móc hiện đại</li>
+                <li>Quy trình minh bạch, rõ ràng</li>
+                <li>Hỗ trợ 24/7 qua hotline</li>
+            </ul>
+        </section>
+
+        <!-- Pricing Summary -->
+        <section id="pricing" class="py-12 bg-gray-50">
+            <h2 class="text-3xl font-bold mb-6 text-center">Báo Giá Nổi Bật</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card p-4">
+                        <h5 class="card-title">Xây Nhà Trọn Gói</h5>
+                        <p>Miễn phí GPXD - Thiết kế</p>
+                        <a href="#pricing-detail" class="btn btn-primary mt-2">Xem Chi Tiết</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-4">
+                        <h5 class="card-title">Xây Phần Thô</h5>
+                        <p>Bao GPXD</p>
+                        <a href="#pricing-detail" class="btn btn-primary mt-2">Xem Chi Tiết</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-4">
+                        <h5 class="card-title">Sửa Chữa Nhà</h5>
+                        <p>Miễn phí khảo sát</p>
+                        <a href="#pricing-detail" class="btn btn-primary mt-2">Xem Chi Tiết</a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-4">
+                        <h5 class="card-title">Nhà Cấp 4</h5>
+                        <p>Khuyến mãi đặc biệt</p>
+                        <a href="#pricing-detail" class="btn btn-primary mt-2">Xem Chi Tiết</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Detail -->
+        <section id="pricing-detail" class="py-12 bg-white">
+            <h3 class="text-2xl font-bold text-center mb-6">Bảng Giá Chi Tiết</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full table-auto border-collapse">
+                    <thead><tr class="bg-gray-100"><th class="px-4 py-2 border">Công Trình</th><th class="px-4 py-2 border">Đơn Giá</th></tr></thead>
+                    <tbody>
+                        <tr><td class="px-4 py-2 border">Phần thô</td><td class="px-4 py-2 border">3.2 – 3.5 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Phần thô (Full House)</td><td class="px-4 py-2 border">3.65 – 3.95 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Hoàn thiện</td><td class="px-4 py-2 border">1.8 – 3 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Trọn gói (Chuẩn)</td><td class="px-4 py-2 border">5.3 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Trọn gói (Phong cách)</td><td class="px-4 py-2 border">5.8 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Trọn gói (Cao cấp)</td><td class="px-4 py-2 border">6.3 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Nhà 2 tầng (Trọn gói)</td><td class="px-4 py-2 border">4.3 – 7 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Nhà Cấp 4 (50–200 m²)</td><td class="px-4 py-2 border">350 – 950 triệu/công trình</td></tr>
+                        <tr><td class="px-4 py-2 border">Thiết kế kiến trúc</td><td class="px-4 py-2 border">50.000 – 120.000 VND/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Phòng trọ (Trọn gói)</td><td class="px-4 py-2 border">2.6 – 3.5 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Nhà Xưởng (Không cầu trục)</td><td class="px-4 py-2 border">1.3 – 1.5 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Nhà Xưởng (Có cầu trục)</td><td class="px-4 py-2 border">1.8 – 2.0 triệu/m²</td></tr>
+                        <tr><td class="px-4 py-2 border">Nhà Xưởng (Trọn gói)</td><td class="px-4 py-2 border">4.0 – 4.5 triệu/m²</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="py-12">
+            <h2 class="text-3xl font-bold text-center mb-8">Lợi Ích Khi Chọn Chúng Tôi</h2>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <img src="https://i.imgur.com/Xeb4EUp.jpeg" alt="Thiết bị đầy đủ" class="mx-auto mb-3 h-12">
+                    <h5>Trang thiết bị đầy đủ</h5>
+                    <p>Cung cấp thiết bị bếp, điện nước, trần thạch cao...</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://i.imgur.com/LohDyws.jpeg" alt="Hồ sơ trọn gói" class="mx-auto mb-3 h-12">
+                    <h5>Hồ sơ trọn gói</h5>
+                    <p>Thiết kế kiến trúc, kết cấu, điện nước rõ ràng.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://i.imgur.com/tzF3QqT.jpeg" alt="Minh bạch chi phí" class="mx-auto mb-3 h-12">
+                    <h5>Minh bạch chi phí</h5>
+                    <p>Hợp đồng rõ ràng, không phát sinh.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="py-12 bg-gray-50">
+            <h2 class="text-3xl font-bold mb-6 text-center">Dịch Vụ Của Chúng Tôi</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div id="construction-hn" class="card hover:shadow-lg transition-shadow duration-300">
+                    <img src="https://i.imgur.com/JxgCHNu.jpeg" alt="Thi Công Nhà Phố" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h5 class="text-xl font-semibold mb-2">Thi Công Nhà Phố</h5>
+                        <p>Đảm bảo tiến độ, chất lượng hoàn hảo, thẩm mỹ cao.</p>
+                    </div>
+                </div>
+                <div id="construction-hotel" class="card hover:shadow-lg transition-shadow duration-300">
+                    <img src="https://i.imgur.com/XVQeXMJ.jpeg" alt="Thi Công Khách Sạn" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h5 class="text-xl font-semibold mb-2">Thi Công Khách Sạn</h5>
+                        <p>Giải pháp trọn gói từ thiết kế đến hoàn thiện nội thất.</p>
+                    </div>
+                </div>
+                <div id="construction-factory" class="card hover:shadow-lg transition-shadow duration-300">
+                    <img src="https://i.imgur.com/OWP3DJM.jpeg" alt="Thi Công Nhà Xưởng" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h5 class="text-xl font-semibold mb-2">Thi Công Nhà Xưởng</h5>
+                        <p>Kết cấu chắc chắn, tối ưu chi phí vận hành và bảo trì.</p>
+                    </div>
+                </div>
+                <div id="construction-interior" class="card hover:shadow-lg transition-shadow duration-300">
+                    <img src="https://i.imgur.com/mGal5gU.jpeg" alt="Thi Công Nội Thất Nhà Phố" class="w-full h-48 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h5 class="text-xl font-semibold mb-2">Thi Công Nội Thất Nhà Phố</h5>
+                        <p>Trang trí và lắp đặt nội thất, tối ưu không gian sống.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="py-12">
+

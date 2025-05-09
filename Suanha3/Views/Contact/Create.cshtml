@@ -1,0 +1,249 @@
+﻿@model Suanha3.Models.Contact
+@{
+    ViewBag.Title = "Liên hệ với chúng tôi";
+}
+
+<div class="contact-section">
+    <div class="container">
+        <div class="contact-wrapper">
+            <!-- Phần thông tin công ty -->
+            <div class="contact-info">
+                <h2><i class="fas fa-comments"></i> Kết nối với chúng tôi</h2>
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Địa chỉ</h3>
+                        <p>Vinhome Ocean Park, Quận 9, TP HCM</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h3>Điện thoại</h3>
+                        <a href="tel:0934888888">0934 888 888</a>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <a href="mailto:info@suanha347.com">info@suanha347.com</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon zalo"><i class="fab fa-zalo"></i></a>
+                    <a href="#" class="social-icon phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+
+            <!-- Form liên hệ -->
+            <div class="contact-form">
+                <h2><i class="fas fa-paper-plane"></i> Gửi thông điệp</h2>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-row">
+                        <div class="form-group animated-input">
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = " " })
+                            @Html.LabelFor(m => m.FullName)
+                            <i class="fas fa-user input-icon"></i>
+                        </div>
+
+                        <div class="form-group animated-input">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = " " })
+                            @Html.LabelFor(m => m.Email)
+                            <i class="fas fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group animated-input">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = " " })
+                        @Html.LabelFor(m => m.Phone)
+                        <i class="fas fa-phone input-icon"></i>
+                    </div>
+
+                    <div class="form-group animated-input">
+                        @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = 4, placeholder = " " })
+                        @Html.LabelFor(m => m.Message)
+                        <i class="fas fa-comment-dots input-icon"></i>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Gửi thông điệp</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Bản đồ -->
+        <div class="google-map">
+            <iframe src="https://maps.google.com/maps?q=Vinhome%20OceanPark%20Qu%E1%BA%ADn%209&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<style>
+.contact-section {
+    padding: 50px 0;
+    background: #f8f9fa;
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.info-card i {
+    font-size: 24px;
+    color: #3498db;
+    width: 40px;
+    margin-right: 15px;
+}
+
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.social-icon.facebook { background: #3b5998; }
+.social-icon.zalo { background: #0068ff; }
+.social-icon.phone { background: #25d366; }
+
+.social-icon:hover {
+    transform: translateY(-3px);
+}
+
+.contact-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+}
+
+.animated-input {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.animated-input label {
+    position: absolute;
+    left: 45px;
+    top: 15px;
+    color: #999;
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.animated-input .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: #666;
+}
+
+.form-control {
+    padding-left: 45px !important;
+    height: 50px;
+    border: 2px solid #eee !important;
+    border-radius: 8px !important;
+    transition: all 0.3s !important;
+}
+
+.form-control:focus {
+    border-color: #3498db !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus ~ label,
+.form-control:not(:placeholder-shown) ~ label {
+    transform: translateY(-25px);
+    font-size: 12px;
+    color: #3498db;
+}
+
+.submit-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.submit-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52,152,219,0.3);
+}
+
+.google-map {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+}
+
+.media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+@section scripts {
+    <script>
+    $(document).ready(function() {
+        $('form').submit(function(e) {
+            e.preventDefault();
+            const btn = $(this).find('button[type="submit"]');
+            btn.html('<i class="fas fa-spinner fa-spin"></i> Đang gửi...');
+
+            // Thêm code xử lý AJAX tại đây
+
+            setTimeout(() => {
+                btn.html('<i class="fas fa-check"></i> Gửi thành công!');
+                setTimeout(() => btn.html('Gửi thông điệp'), 2000);
+            }, 1500);
+        });
+    });
+    </script>
+}

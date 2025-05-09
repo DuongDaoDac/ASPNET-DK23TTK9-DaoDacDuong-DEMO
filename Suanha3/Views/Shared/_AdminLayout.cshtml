@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "_AdminLayout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Admin Control</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Trang chủ Admin", "Dashboard", "Admin")</li>
+                <li>@Html.ActionLink("Dịch vụ", "Index", "AdminService")</li>
+                <li>@Html.ActionLink("Đơn giá", "Index", "AdminPricing")</li>
+                <li>@Html.ActionLink("Tin tức", "Index", "AdminNews")</li>
+                <li>@Html.ActionLink("Liên hệ", "Index", "AdminContact")</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2025 - MyRepairWebApp Suanha Admin</p>
+        </footer>
+    </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-3">
+        <div class="container text-center">
+            <p>Địa chỉ: Vinhome Ocean Park, Quận 9, TP HCM</p>
+            <p>Hotline: 0947678096 / Email: suanha25h@tpb.com.vn</p>
+            <p><a href="#" class="text-blue-400">Bản đồ chỉ đường</a></p>
+            <iframe src="https://maps.google.com/maps?q=Vinhome%20OceanPark%20Qu%E1%BA%ADn%209&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    width="100%" height="250" style="border:0;"></iframe>
+        </div>
+    </footer>
+</body>
+</html>
+

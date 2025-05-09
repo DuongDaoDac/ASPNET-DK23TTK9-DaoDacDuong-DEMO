@@ -1,0 +1,27 @@
+﻿@model Suanha3.Models.Pricing
+
+@{
+    ViewBag.Title = "Chi tiết dịch vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết dịch vụ</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Tên dịch vụ</th>
+        <td>@Model.ServiceName</td>
+    </tr>
+    <tr>
+        <th>Giá</th>
+        <td>@String.Format("{0:N0} VNĐ", Model.Price)</td>
+    </tr>
+</table>
+
+<a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-warning">Sửa</a>
+<a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Xóa</a>
+<a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>

@@ -1,0 +1,23 @@
+﻿@model Suanha3.Models.Service
+@{
+    ViewBag.Title = "Xóa Dịch vụ | Sửa Nhà 347";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <h1 class="text-3xl font-bold mb-4 text-danger">❌ Xóa dịch vụ</h1>
+
+    <div class="alert alert-warning">
+        Bạn có chắc chắn muốn xóa dịch vụ <strong>@Model.Title</strong> không?
+    </div>
+
+    <img src="@Model.ImageUrl" width="300" class="mb-3" />
+
+    @using (Html.BeginForm("DeleteConfirmed", "Service", new { id = Model.Id }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a href="@Url.Action("Index", "Service")" class="btn btn-secondary">Hủy</a>
+    }
+</div>

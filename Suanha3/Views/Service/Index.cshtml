@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Suanha3.Models.Service>
+@{
+    ViewBag.Title = "Danh sách Dịch vụ Sửa Nhà & Nội Thất Chuyên Nghiệp | Sửa Nhà 347";
+    ViewBag.Description = "Danh sách hơn 20 dịch vụ sửa chữa nhà cửa, cải tạo nội thất chuyên nghiệp. Đội ngũ thợ lành nghề, báo giá minh bạch, chất lượng hàng đầu.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var services = new List<Suanha3.Models.Service>
+{
+        new Suanha3.Models.Service { Id = 1, Title = "Sửa Chữa Nhà Cấp 4 Trọn Gói", Description = "Thi công nhanh, giá siêu hợp lý, bảo hành dài hạn!", ImageUrl = "/Content/images/service1.jpg", Category = "repair", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 2, Title = "Cải Tạo Phòng Khách Hiện Đại", Description = "Biến không gian cũ thành phòng khách sang trọng, đẳng cấp.", ImageUrl = "/Content/images/service2.jpg", Category = "renovation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 3, Title = "Lắp Đặt Điều Hòa Inverter", Description = "Tư vấn & lắp điều hòa tiết kiệm điện, siêu mát!", ImageUrl = "/Content/images/service3.jpg", Category = "installation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 4, Title = "Sơn Nhà Nội Ngoại Thất Cao Cấp", Description = "Đội sơn chuyên nghiệp - Màu sắc bền đẹp, chuẩn hãng.", ImageUrl = "/Content/images/service4.jpg", Category = "repair", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 5, Title = "Chống Thấm Sân Thượng & Tường", Description = "Chống thấm siêu bền, bảo hành 5-10 năm.", ImageUrl = "/Content/images/service5.jpg", Category = "repair", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 6, Title = "Thi Công Tủ Bếp Gỗ Công Nghiệp", Description = "Thiết kế, thi công tủ bếp MDF, HDF, Acrylic cao cấp.", ImageUrl = "/Content/images/service6.jpg", Category = "installation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 7, Title = "Cải Tạo Nhà Vệ Sinh Hiện Đại", Description = "Nâng cấp thiết bị, sàn gạch & nội thất phòng tắm.", ImageUrl = "/Content/images/service7.jpg", Category = "renovation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 8, Title = "Ốp Lát Gạch Nền, Tường", Description = "Ốp lát thẩm mỹ, thi công nhanh, bảo hành uy tín.", ImageUrl = "/Content/images/service8.jpg", Category = "repair", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 9, Title = "Thiết Kế Nội Thất Chung Cư", Description = "Thiết kế phong cách hiện đại, tối ưu diện tích.", ImageUrl = "/Content/images/service9.jpg", Category = "renovation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 10, Title = "Lắp Đặt Hệ Thống Camera An Ninh", Description = "Camera HD, Full HD, giám sát an toàn 24/7.", ImageUrl = "/Content/images/service10.jpg", Category = "installation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 11, Title = "Vệ Sinh Nhà Sau Xây Dựng", Description = "Tổng vệ sinh sạch bóng sau thi công, bàn giao ngay.", ImageUrl = "/Content/images/service11.jpg", Category = "maintenance", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 12, Title = "Bảo Trì Hệ Thống Điện Nước", Description = "Bảo trì định kỳ, xử lý nhanh sự cố điện nước.", ImageUrl = "/Content/images/service12.jpg", Category = "maintenance", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 13, Title = "Thi Công Vách Ngăn Nhôm Kính", Description = "Phân chia không gian sang trọng, lấy sáng tối ưu.", ImageUrl = "/Content/images/service13.jpg", Category = "renovation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 14, Title = "Lắp Đèn Trang Trí Nội Thất", Description = "Đèn trần, đèn LED âm trần, đèn phòng ngủ siêu đẹp.", ImageUrl = "/Content/images/service14.jpg", Category = "installation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 15, Title = "Dọn Nhà, Chuyển Nhà Trọn Gói", Description = "Nhanh gọn, an toàn, giá tốt tại TP.HCM.", ImageUrl = "/Content/images/service15.jpg", Category = "maintenance", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 16, Title = "Lắp Đặt Bình Nóng Lạnh", Description = "Thi công chuẩn kỹ thuật, bảo hành chính hãng.", ImageUrl = "/Content/images/service16.jpg", Category = "installation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 17, Title = "Cơi Nới Nhà Ở, Tầng Lửng", Description = "Tăng diện tích sống, tối ưu không gian.", ImageUrl = "/Content/images/service17.jpg", Category = "renovation", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 18, Title = "Bảo Trì Chống Thấm Mái Nhà", Description = "Chống thấm sân thượng, mái tôn siêu bền.", ImageUrl = "/Content/images/service18.jpg", Category = "maintenance", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 19, Title = "Sửa Chữa Cửa Sắt, Cổng Nhà", Description = "Hàn xì, sơn mới cửa sắt, cổng nhà bền đẹp.", ImageUrl = "/Content/images/service19.jpg", Category = "repair", CreatedDate = DateTime.Now },
+        new Suanha3.Models.Service { Id = 20, Title = "Thi Công Mái Tôn, Mái Ngói", Description = "Lợp mới, thay thế, chống nóng mái tôn, mái ngói.", ImageUrl = "/Content/images/service20.jpg", Category = "repair", CreatedDate = DateTime.Now }
+    };
+}
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 font-weight-bold text-primary mb-3">🏠 Dịch Vụ Sửa Nhà & Nội Thất</h1>
+        <p class="lead">Hơn 20 dịch vụ chuyên nghiệp — Cam kết chất lượng — Bảo hành dài hạn</p>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="🔍 Tìm kiếm dịch vụ..." id="searchInput">
+        </div>
+        <div class="col-md-6">
+            <select class="form-control" id="categoryFilter">
+                <option value="">Tất cả danh mục</option>
+                <option value="repair">Sửa chữa</option>
+                <option value="renovation">Cải tạo</option>
+                <option value="installation">Lắp đặt</option>
+                <option value="maintenance">Bảo trì</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row" id="serviceContainer">
+        @foreach (var s in services)
+        {
+            <div class="col-lg-4 col-md-6 mb-4 service-card" data-category="@s.Category">
+                <div class="card h-100 shadow-sm">
+                    <img src="@s.ImageUrl" class="card-img-top" alt="@s.Title" loading="lazy">
+                    <div class="card-body">
+                        <h2 class="h5 card-title font-weight-bold">@s.Title</h2>
+                        <p class="card-text text-muted">@s.Description</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">📅 @s.CreatedDate.ToString("dd/MM/yyyy")</small>
+                            <div>
+                                <a href="#" class="btn btn-sm btn-primary">Chi tiết</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">✏️</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-lg btn-success">➕ Thêm dịch vụ mới</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#searchInput, #categoryFilter').on('input change', function () {
+                let searchText = $('#searchInput').val().toLowerCase();
+                let category = $('#categoryFilter').val();
+                $('.service-card').each(function () {
+                    let title = $(this).find('.card-title').text().toLowerCase();
+                    let cat = $(this).data('category');
+                    let matchSearch = title.includes(searchText);
+                    let matchCategory = category === '' || cat === category;
+                    $(this).toggle(matchSearch && matchCategory);
+                });
+            });
+        });
+    </script>
+}

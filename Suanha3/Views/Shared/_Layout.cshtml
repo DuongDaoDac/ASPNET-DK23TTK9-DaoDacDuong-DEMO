@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="vi" itemscope itemtype="https://schema.org/ProfessionalService">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>@ViewBag.Title - Sửa Nhà 347</title>
+    <meta name="description" content="@ViewBag.Description">
+    <link rel="canonical" href="Context.Request.GetEncodedUrl()" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="Context.Request.GetEncodedUrl()">
+    <meta property="og:title" content="@ViewBag.Title">
+    <meta property="og:description" content="@ViewBag.Description">
+    <meta property="og:image" content="@(ViewBag.Image ?? "https://suapha347.com/images/og-default.jpg")">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@("@suapha347")">
+    <meta name="twitter:title" content="@ViewBag.Title">
+    <meta name="twitter:description" content="@ViewBag.Description">
+    <meta name="twitter:image" content="@(ViewBag.Image ?? "https://suapha347.com/images/og-default.jpg")">
+
+    <!-- Structured Data -->
+    @RenderSection("StructuredData", required: false)
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Preconnect to important domains -->
+    <link rel="preconnect" href="https://maps.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white py-4 shadow-lg">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="/" class="text-decoration-none">
+                <h1 class="text-3xl font-bold" itemprop="name">Xây Dựng 347</h1>
+            </a>
+            <nav aria-label="Main navigation">
+                <ul class="nav">
+                    <li class="nav-item"><a href="/" class="nav-link text-white" itemprop="url">Trang chủ</a></li>
+                    <li class="nav-item"><a href="/Home/About" class="nav-link text-white">Giới thiệu</a></li>
+                    <li class="nav-item"><a href="/Service/Index" class="nav-link text-white">Dịch vụ</a></li>
+                    <li class="nav-item"><a href="/Home/News" class="nav-link text-white">Tin tức</a></li>
+                    <li class="nav-item"><a href="/Home/Pricing" class="nav-link text-white">Đơn giá</a></li>
+                    <li class="nav-item"><a href="/Admin/Index" class="nav-link text-white">Admin</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Index", "Contact")" class="nav-link text-white">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item">
+                        <span itemprop="name">Trang chủ</span>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                @RenderSection("Breadcrumb", required: false)
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-5 mt-5" itemscope itemtype="https://schema.org/LocalBusiness">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3 class="h5 mb-3">Thông tin liên hệ</h3>
+                    <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                        <span itemprop="streetAddress">Vinhome Ocean Park</span>,
+                        <span itemprop="addressLocality">Quận 9</span>,
+                        <span itemprop="addressRegion">TP HCM</span>
+                    </p>
+                    <p>Hotline: <a href="tel:0947678096" class="text-white" itemprop="telephone">0947 678 096</a></p>
+                    <p>Email: <a href="mailto:xaydung25h@tpb.com.vn" class="text-white" itemprop="email">xaydung25h@tpb.com.vn</a></p>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://maps.google.com/maps?q=Vinhome%20OceanPark%20Qu%E1%BA%ADn%209&output=embed"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                aria-label="Bản đồ chỉ đường">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4 border-top pt-3">
+                <p class="mb-0">&copy; @DateTime.Now.Year Sửa Nhà 347. Giấy phép ĐKKD số: 123456789</p>
+            </div>
+        </div>
+    </footer>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

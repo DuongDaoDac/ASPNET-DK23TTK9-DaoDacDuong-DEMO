@@ -1,0 +1,32 @@
+﻿@model Suanha3.Models.Contact
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liên hệ với chúng tôi</h2>
+
+@using (Html.BeginForm("Index", "Contact", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control mb-2", placeholder = "Name" })
+    @Html.ValidationMessageFor(m => m.FullName)
+
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control mb-2", placeholder = "Email" })
+    @Html.ValidationMessageFor(m => m.Email)
+
+    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control mb-2", placeholder = "Điện thoại" })
+    @Html.ValidationMessageFor(m => m.Phone)
+
+    @Html.TextAreaFor(m => m.Message, new { @class = "form-control mb-2", placeholder = "Nội dung" })
+    @Html.ValidationMessageFor(m => m.Message)
+
+    <button type="submit" class="btn btn-primary">Gửi liên hệ</button>
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success mt-2">@ViewBag.Message</div>
+}
+

@@ -1,0 +1,368 @@
+﻿@{
+    ViewBag.Title = "Đơn giá";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="price-list">
+    <div class="container">
+        <h1 class="page-header">BẢNG GIÁ 50 DỊCH VỤ SỬA CHỮA NHÀ 2024</h1>
+
+        <!-- Bộ lọc và so sánh -->
+        <div class="price-controls row mb-4">
+            <div class="col-md-4">
+                <select class="form-control category-filter">
+                    <option value="all">Tất cả hạng mục</option>
+                    <option value="dien">Điện</option>
+                    <option value="nuoc">Nước</option>
+                    <option value="son">Sơn</option>
+                    <option value="oplat">Ốp lát</option>
+                    <!-- Thêm các option khác -->
+                </select>
+            </div>
+            <div class="col-md-5">
+                <input type="text" class="form-control search-box" placeholder="Tìm kiếm dịch vụ...">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-warning btn-block compare-btn" data-toggle="modal" data-target="#compareModal">
+                    <i class="fas fa-balance-scale"></i> SO SÁNH GIÁ (0)
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="price-table table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>STT</th>
+                        <th>HẠNG MỤC</th>
+                        <th>CHI TIẾT DỊCH VỤ</th>
+                        <th>ĐƠN VỊ</th>
+                        <th>MỨC GIÁ (VNĐ)</th>
+                        <th>BẢO HÀNH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Điện -->
+                    <tr class="category-header" data-category="dien">
+                        <td colspan="7"><i class="fas fa-bolt"></i> ĐIỆN DÂN DỤNG</td>
+                    </tr>
+                    <tr data-category="dien">
+                        <td><input type="checkbox" class="compare-check"></td>
+                        <td>1</td>
+                        <td>Lắp CB tổng</td>
+                        <td>Áp tô mát 1P</td>
+                        <td>Cái</td>
+                        <td>150.000 - 300.000</td>
+                        <td>24 tháng</td>
+                    </tr>
+
+                    <!-- Thêm các dịch vụ khác với cấu trúc tương tự -->
+
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modal so sánh -->
+        <div class="modal fade" id="compareModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">SO SÁNH DỊCH VỤ</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="compareContent">
+                        <!-- Nội dung so sánh sẽ được thêm bằng JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Custom CSS */
+.price-controls {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.category-header td {
+    background: #2c3e50!important;
+    color: white!important;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.price-table th {
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    background: #34495e;
+}
+
+.compare-check {
+    transform: scale(1.2);
+}
+
+#compareModal .modal-header {
+    background: #3498db;
+    color: white;
+}
+
+.compare-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}
+
+.price-chart {
+    height: 300px;
+    margin: 20px 0;
+}
+
+.media (max-width: 768px) {
+    .price-controls .col-md-4,
+    .price-controls .col-md-5,
+    .price-controls .col-md-3 {
+        margin-bottom: 10px;
+    }
+
+    .price-table td,
+    .price-table th {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+</style>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            let selectedItems = [];
+
+            // Lọc theo danh mục
+            $('.category-filter').change(function () {
+                const category = $(this).val();
+                $('tbody tr').hide();
+                if (category === 'all') {
+                    $('tbody tr').show();
+                } else {
+                    $(`tr[data-category="${category}"], .category-header`).show();
+                }
+            });
+
+            // Tìm kiếm
+            $('.search-box').keyup(function () {
+                const searchTerm = $(this).val().toLowerCase();
+                $('tbody tr:not(.category-header)').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -1);
+                });
+            });
+
+            // So sánh
+            $('.compare-check').change(function () {
+                const item = $(this).closest('tr');
+                if ($(this).is(':checked')) {
+                    selectedItems.push(item);
+                } else {
+                    selectedItems = selectedItems.filter(i => i[0] !== item[0]);
+                }
+                updateCompareButton();
+            });
+
+            $('#selectAll').change(function () {
+                $('.compare-check').prop('checked', $(this).is(':checked')).trigger('change');
+            });
+
+            function updateCompareButton() {
+                $('.compare-btn').text(` SO SÁNH GIÁ (${selectedItems.length})`);
+            }
+
+            $('#compareModal').on('show.bs.modal', function () {
+                const content = $('#compareContent').empty();
+                selectedItems.forEach(item => {
+                    const cols = item.find('td');
+                    content.append(`
+                    <div class="compare-item">
+                        <h5>${cols.eq(2).text()}</h5>
+                        <p>Chi tiết: ${cols.eq(3).text()}</p>
+                        <p>Đơn giá: ${cols.eq(5).text()}</p>
+                        <p>Bảo hành: ${cols.eq(6).text()}</p>
+                    </div>
+                `);
+                });
+
+                if (selectedItems.length === 0) {
+                    content.html('<p class="text-center">Vui lòng chọn dịch vụ để so sánh</p>');
+                }
+            });
+        });
+    </script>
+}
+<div class="price-list">
+    <div class="container">
+        <h1 class="page-header">BẢNG GIÁ 50 DỊCH VỤ SỬA CHỮA NHÀ 2024</h1>
+
+        <div class="table-responsive">
+            <table class="price-table table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>STT</th>
+                        <th>HẠNG MỤC</th>
+                        <th>CHI TIẾT DỊCH VỤ</th>
+                        <th>ĐƠN VỊ</th>
+                        <th>MỨC GIÁ (VNĐ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Điện -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-bolt"></i> ĐIỆN DÂN DỤNG</td>
+                    </tr>
+                    <tr><td>1</td><td>Lắp CB tổng</td><td>Áp tô mát 1P</td><td>Cái</td><td>150.000 - 300.000</td></tr>
+                    <tr><td>2</td><td>Điện âm tường</td><td>Dây 1.5mm²</td><td>m</td><td>25.000 - 40.000</td></tr>
+                    <tr><td>3</td><td>Ổ cắm đôi</td><td>Panasonic/Primo</td><td>Cái</td><td>80.000 - 150.000</td></tr>
+
+                    <!-- Nước -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-faucet"></i> HỆ THỐNG NƯỚC</td>
+                    </tr>
+                    <tr><td>4</td><td>Thay ống PPR</td><td>Ống Bình Minh</td><td>m</td><td>85.000 - 120.000</td></tr>
+                    <tr><td>5</td><td>Lắp bình nóng lạnh</td><td>Gián tiếp</td><td>Cái</td><td>300.000 - 500.000</td></tr>
+
+                    <!-- Sơn -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-paint-roller"></i> SƠN SỬA</td>
+                    </tr>
+                    <tr><td>6</td><td>Sơn tường mới</td><td>Sơn Dulux</td><td>m²</td><td>50.000 - 70.000</td></tr>
+                    <tr><td>7</td><td>Sơn dầu cửa</td><td>2 lớp</td><td>m²</td><td>120.000 - 150.000</td></tr>
+
+                    <!-- Gạch -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-border-style"></i> ỐP LÁT</td>
+                    </tr>
+                    <tr><td>8</td><td>Gạch ceramic 60x60</td><td>Keo dán chuyên dụng</td><td>m²</td><td>130.000 - 180.000</td></tr>
+                    <tr><td>9</td><td>Đá granite tự nhiên</td><td>Cắt CNC viền chuẩn</td><td>m²</td><td>400.000 - 600.000</td></tr>
+
+                    <!-- Chống thấm -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-tint-slash"></i> CHỐNG THẤM</td>
+                    </tr>
+                    <tr><td>10</td><td>Xử lý thấm sân thượng</td><td>Vật liệu PU</td><td>m²</td><td>200.000 - 250.000</td></tr>
+
+                    <!-- Cửa -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-door-open"></i> CỬA CỔNG</td>
+                    </tr>
+                    <tr><td>11</td><td>Cửa gỗ công nghiệp</td><td>Lõi chống ẩm</td><td>m²</td><td>1.800.000 - 2.500.000</td></tr>
+                    <tr><td>12</td><td>Khóa vân tay</td><td>Hàn Quốc</td><td>Cái</td><td>2.500.000 - 5.000.000</td></tr>
+
+                    <!-- Trần -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-grip-horizontal"></i> TRẦN THẠCH CAO</td>
+                    </tr>
+                    <tr><td>13</td><td>Trần phẳng</td><td>Khung xương Vĩnh Tường</td><td>m²</td><td>180.000 - 220.000</td></tr>
+
+                    <!-- Vách -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-border-all"></i> VÁCH NGĂN</td>
+                    </tr>
+                    <tr><td>14</td><td>Vách kính cường lực</td><td>Dày 10mm</td><td>m²</td><td>1.200.000 - 1.800.000</td></tr>
+
+                    <!-- Thiết bị vệ sinh -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-toilet"></i> VỆ SINH</td>
+                    </tr>
+                    <tr><td>15</td><td>Bồn cầu 1 khối</td><td>Inax/TOTO</td><td>Cái</td><td>4.500.000 - 12.000.000</td></tr>
+
+                    <!-- Mái -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-home"></i> MÁI NHÀ</td>
+                    </tr>
+                    <tr><td>16</td><td>Lợp mái tôn</td><td>Tôn lạnh màu</td><td>m²</td><td>150.000 - 200.000</td></tr>
+
+                    <!-- Sàn -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-square"></i> SÀN NHÀ</td>
+                    </tr>
+                    <tr><td>17</td><td>Đánh bóng sàn đá</td><td>Máy công nghiệp</td><td>m²</td><td>80.000 - 120.000</td></tr>
+
+                    <!-- Cầu thang -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-stairs"></i> CẦU THANG</td>
+                    </tr>
+                    <tr><td>18</td><td>Lan inox 304</td><td>Khung sắt mạ kẽm</td><td>m</td><td>450.000 - 700.000</td></tr>
+
+                    <!-- Tủ bếp -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-utensils"></i> TỦ BẾP</td>
+                    </tr>
+                    <tr><td>19</td><td>Tủ acrylic</td><td>Khung gỗ MFC</td><td>m</td><td>3.500.000 - 5.000.000</td></tr>
+
+                    <!-- Thông minh -->
+                    <tr class="category-header">
+                        <td colspan="5"><i class="fas fa-lightbulb"></i> SMART HOME</td>
+                    </tr>
+                    <tr><td>20</td><td>Công tắc thông minh</td><td>WiFi/SmartThings</td><td>Cái</td><td>350.000 - 800.000</td></tr>
+
+                    <!-- ... Tiếp tục thêm đến 50 dịch vụ ... -->
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="price-notes">
+            <h3><i class="fas fa-exclamation-triangle"></i> Ghi chú:</h3>
+            <ul>
+                <li>Giá chưa bao gồm VAT và phí vật tư đặc biệt</li>
+                <li>Bảo hành từ 12-60 tháng tùy hạng mục</li>
+                <li>Miễn phí khảo sát cho công trình >50m²</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .price-table th {
+        background: #2c3e50;
+        color: white;
+        font-weight: 600;
+    }
+
+    .category-header td {
+        background: #3498db !important;
+        color: white !important;
+        font-weight: bold;
+        font-size: 1.1em;
+        letter-spacing: 1px;
+    }
+
+    .price-table td {
+        vertical-align: middle;
+        transition: all 0.3s;
+    }
+
+    .price-table tr:hover td {
+        background: #f8f9fa;
+    }
+
+    .price-notes {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .media (max-width: 768px) {
+        .price-table th, .price-table td
+
+    {
+        font-size: 14px;
+        padding: 12px 8px;
+    }
+    }
+</style>

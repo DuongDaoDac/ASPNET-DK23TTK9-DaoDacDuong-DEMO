@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Quản lý đơn giá dịch vụ";
+}
+
+<div class="container py-4">
+    <h1 class="mb-4">📋 Danh sách đơn giá dịch vụ</h1>
+
+    <div class="d-flex justify-content-between mb-3">
+        <form class="d-flex" method="get" action="#">
+            <input type="text" name="search" class="form-control me-2" placeholder="Tìm kiếm dịch vụ..." />
+            <button class="btn btn-primary" type="submit">Tìm</button>
+        </form>
+        <a href="@Url.Action("Create", "Pricing")" class="btn btn-success">
+            <i class="fas fa-plus"></i> Thêm mới
+        </a>
+    </div>
+
+    <table class="table table-bordered table-hover bg-white">
+        <thead class="table-light">
+            <tr>
+                <th>Mã</th>
+                <th>Tên dịch vụ</th>
+                <th>Giá tiền (VNĐ)</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var service in Model)
+                {
+                    <tr>
+                        <td>@service.Id</td>
+                        <td>@service.ServiceName</td>
+                        <td>@String.Format("{0:N0}", service.Price) VNĐ</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Pricing", new { id = service.Id })" class="btn btn-sm btn-primary">Sửa</a>
+                            <a href="@Url.Action("Delete", "Pricing", new { id = service.Id })" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa dịch vụ này?');">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-danger">
+                        <i class="fas fa-exclamation-circle"></i> Không có dữ liệu để hiển thị
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

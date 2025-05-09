@@ -1,0 +1,28 @@
+﻿@model Suanha3.Models.Pricing
+
+@{
+    ViewBag.Title = "Chỉnh sửa dịch vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa giá dịch vụ</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Tên dịch vụ</label>
+        @Html.TextBoxFor(m => m.ServiceName, new { @class = "form-control", placeholder = "Nhập tên dịch vụ" })
+        @Html.ValidationMessageFor(m => m.ServiceName)
+    </div>
+
+    <div class="form-group">
+        <label>Giá</label>
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control", placeholder = "Nhập giá (VNĐ)" })
+        @Html.ValidationMessageFor(m => m.Price)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Quay lại</a>
+}

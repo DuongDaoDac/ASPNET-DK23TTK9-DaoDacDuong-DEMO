@@ -1,0 +1,33 @@
+﻿@model Suanha3.Models.Service
+@{
+    ViewBag.Title = "Thêm Dịch vụ | Sửa Nhà 347";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <h1 class="text-3xl font-bold mb-4">➕ Thêm dịch vụ mới</h1>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 4 })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.ImageUrl)
+            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+        </div>
+
+        <button type="submit" class="btn btn-success">Lưu dịch vụ</button>
+        <a href="@Url.Action("Index", "Service")" class="btn btn-secondary">Quay lại</a>
+    }
+</div>

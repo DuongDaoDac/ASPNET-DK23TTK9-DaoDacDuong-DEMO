@@ -1,0 +1,30 @@
+﻿@model Suanha3.Models.Pricing
+
+@{
+    ViewBag.Title = "Xóa dịch vụ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bạn chắc chắn muốn xóa dịch vụ này?</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>Tên dịch vụ</th>
+        <td>@Model.ServiceName</td>
+    </tr>
+    <tr>
+        <th>Giá</th>
+        <td>@String.Format("{0:N0} VNĐ", Model.Price)</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Hủy</a>
+}

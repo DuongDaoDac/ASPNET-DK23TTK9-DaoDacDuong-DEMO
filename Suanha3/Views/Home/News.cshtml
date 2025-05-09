@@ -1,0 +1,291 @@
+﻿@{
+    ViewBag.Title = "Tin tức";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="news-page">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-container">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Tin tức</li>
+            </ol>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Phần 1: Tin tức liên quan -->
+        <section class="news-section">
+            <h2 class="section-title">
+                <i class="fas fa-newspaper"></i> TIN TỨC MỚI NHẤT
+                <a href="#" class="view-all">Xem tất cả <i class="fas fa-angle-right"></i></a>
+            </h2>
+
+            <div class="row">
+                <!-- Tin 1 -->
+                <div class="col-md-4">
+                    <article class="news-card">
+                        <div class="news-thumbnail">
+                            <a href="#">
+                                <img src="https://via.placeholder.com/370x250/FFB347/fff?text=ThiCong" alt="Thi công nhà" class="img-fluid">
+                            </a>
+                            <span class="post-date">20/07/2024</span>
+                        </div>
+                        <div class="news-content">
+                            <h3 class="news-title">
+                                <a href="#">Xu hướng thiết kế nhà phố 2024</a>
+                            </h3>
+                            <p class="news-excerpt">Khám phá những mẫu thiết kế hiện đại kết hợp không gian xanh...</p>
+                            <div class="news-meta">
+                                <span class="category"><i class="fas fa-tag"></i> Thiết kế</span>
+                                <span class="comments"><i class="fas fa-comment"></i> 15</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Thêm 2 tin còn lại -->
+            </div>
+        </section>
+
+        <!-- Phần 2: Tin tuyển dụng -->
+        <section class="recruitment-section">
+            <h2 class="section-title bg-primary">
+                <i class="fas fa-briefcase"></i> TUYỂN DỤNG
+                <a href="#" class="view-all">Xem thêm <i class="fas fa-angle-right"></i></a>
+            </h2>
+
+            <div class="row">
+                <!-- Tin 1 -->
+                <div class="col-md-4">
+                    <div class="job-card">
+                        <div class="job-header">
+                            <h3>Thợ sửa chữa điện nước</h3>
+                            <span class="salary">10-15 triệu</span>
+                        </div>
+                        <div class="job-body">
+                            <ul class="job-info">
+                                <li><i class="fas fa-map-marker-alt"></i> Hồ Chí Minh</li>
+                                <li><i class="fas fa-clock"></i> Hạn nộp: 30/08/2024</li>
+                                <li><i class="fas fa-users"></i> 5 vị trí</li>
+                            </ul>
+                            <a href="#" class="btn-apply">Ứng tuyển ngay</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thêm 2 tin còn lại -->
+            </div>
+        </section>
+
+        <!-- Phần 3: Lỗi thường gặp -->
+        <section class="common-issues">
+            <h2 class="section-title bg-danger">
+                <i class="fas fa-exclamation-triangle"></i> LỖI THƯỜNG GẶP
+                <a href="#" class="view-all">Xem thêm <i class="fas fa-angle-right"></i></a>
+            </h2>
+
+            <div class="row">
+                <!-- Lỗi 1 -->
+                <div class="col-md-4">
+                    <div class="issue-card">
+                        <div class="issue-icon">
+                            <i class="fas fa-tint-slash"></i>
+                        </div>
+                        <h3>Thấm dột mái nhà</h3>
+                        <ul class="issue-list">
+                            <li>Nguyên nhân: Rạn nứt bê tông</li>
+                            <li>Giải pháp: Chống thấm Polyurethane</li>
+                            <li>Chi phí: 200.000đ/m²</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Thêm 2 lỗi còn lại -->
+            </div>
+        </section>
+    </div>
+</div>
+
+<style>
+/* Common Styles */
+.section-title {
+    padding: 15px 20px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 5px;
+    margin: 40px 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title.bg-primary { background: #3498db; }
+.section-title.bg-danger { background: #e74c3c; }
+
+.view-all {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.view-all:hover {
+    color: #f1c40f;
+}
+
+/* Phần tin tức */
+.news-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    margin-bottom: 30px;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-thumbnail {
+    position: relative;
+}
+
+.post-date {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.news-title a {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.news-meta {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* Phần tuyển dụng */
+.job-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.job-header {
+    background: #f8f9fa;
+    padding: 20px;
+    border-bottom: 2px solid #3498db;
+}
+
+.job-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.salary {
+    background: #3498db;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    float: right;
+    font-size: 14px;
+}
+
+.job-body {
+    padding: 20px;
+}
+
+.job-info {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    color: #7f8c8d;
+}
+
+.job-info li {
+    margin-bottom: 8px;
+}
+
+.btn-apply {
+    display: block;
+    text-align: center;
+    background: #2ecc71;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn-apply:hover {
+    background: #27ae60;
+    color: white;
+}
+
+/* Phần lỗi thường gặp */
+.issue-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.issue-icon {
+    font-size: 40px;
+    color: #e74c3c;
+    margin-bottom: 15px;
+}
+
+.issue-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    color: #7f8c8d;
+}
+
+.issue-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.issue-list li:before {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    left: 10px;
+}
+
+.media (max-width: 768px) {
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .view-all {
+        margin-top: 10px;
+    }
+}
+</style>

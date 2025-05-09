@@ -1,0 +1,66 @@
+﻿@model Suanha3.Models.Contact
+
+@{
+    ViewBag.Title = "Liên hệ Suanha347";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Liên hệ với Suanha347</h2>
+    <div class="row">
+        <!-- Cột trái: Thông tin & Bản đồ -->
+        <div class="col-md-6">
+            <h4>Thông tin liên hệ</h4>
+            <p><strong>Email:</strong> lienhe@suanha347.vn</p>
+            <p><strong>Hotline:</strong> 0934 888 881</p>
+            <p><strong>Địa chỉ:</strong> Vinhome Ocean Park, Quận 9, TP HCM</p>
+
+            <h4>Bản đồ</h4>
+            <iframe width="100%" height="300" frameborder="0" style="border:0"
+                    src="https://maps.google.com/maps?q=Vinhome%20OceanPark%20Qu%E1%BA%ADn%209&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen>
+            </iframe> <!-- Maps Embed API iframe :contentReference[oaicite:4]{index=4} -->
+        </div>
+
+        <!-- Cột phải: Form liên hệ -->
+        <div class="col-md-6">
+            <h4>Gửi thông tin liên hệ</h4>
+
+            @using (Html.BeginForm("Index", "Contact", FormMethod.Post, new { @class = "needs-validation", novalidate = "novalidate" }))
+            {
+                @Html.AntiForgeryToken() <!-- CSRF protection  -->
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FullName)
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Họ và tên", required = "required" })
+                    @Html.ValidationMessageFor(m => m.FullName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", type = "email", required = "required" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Phone)
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Điện thoại", required = "required" })
+                    @Html.ValidationMessageFor(m => m.Phone)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Message)
+                    @Html.TextAreaFor(m => m.Message, 5, 0, new { @class = "form-control", placeholder = "Nội dung liên hệ", required = "required" })
+                    @Html.ValidationMessageFor(m => m.Message)
+                </div>
+
+                <button type="submit" class="btn btn-primary">Gửi liên hệ</button>
+            }
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-success mt-3">@ViewBag.Message</div>
+            }
+        </div>
+    </div>
+</div>
+

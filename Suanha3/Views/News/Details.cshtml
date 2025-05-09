@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Title</h2>
+<p><em>Chuyên mục: @Model.Category - Ngày đăng: @Model.CreatedDate</em></p>
+<p>@Model.Content</p>
+
+@Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-default" })
+
+

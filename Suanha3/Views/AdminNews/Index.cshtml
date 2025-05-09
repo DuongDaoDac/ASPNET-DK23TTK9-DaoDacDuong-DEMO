@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Suanha3.Models.News>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Quản lý tin tức | Suanha347";
+}
+
+<div class="container py-4">
+    <h1 class="mb-4">📰 Quản lý bài viết tin tức</h1>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="mb-3">
+        <a href="@Url.Action("Create", "AdminNews")" class="btn btn-success">
+            <i class="fas fa-plus"></i> Thêm bài viết mới
+        </a>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered table-hover bg-white">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Tiêu đề</th>
+                    <th>Ngày đăng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var news in Model)
+                {
+                    <tr>
+                        <td>@news.Id</td>
+                        <td>@news.Title</td>
+                        <td>@(DateTime.TryParse(news.CreatedDate, out DateTime parsedDate) ? parsedDate.ToString("dd/MM/yyyy HH:mm") : "")</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "AdminNews", new { id = news.Id })" 
+                               class="btn btn-sm btn-primary">Sửa</a>
+
+                            <a href="@Url.Action("Delete", "AdminNews", new { id = news.Id })" 
+                               class="btn btn-sm btn-danger"
+                               onclick="return confirm('Bạn có chắc muốn xóa bài viết này?');">
+                                Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <i class="fas fa-exclamation-circle"></i> Hiện chưa có bài viết nào.
+        </div>
+    }
+</div>

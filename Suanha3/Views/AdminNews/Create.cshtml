@@ -1,0 +1,39 @@
+﻿@model Suanha3.Models.News
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Thêm bài viết mới | Suanha347";
+}
+
+<div class="container py-4">
+    <h1 class="mb-4">➕ Thêm bài viết mới</h1>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Title, "Tiêu đề", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Description, "Mô tả ngắn", new { @class = "form-label" })
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 3 })
+            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.ImageUrl, "Đường dẫn ảnh", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(m => m.Content, "Nội dung chi tiết", new { @class = "form-label" })
+            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", rows = 6 })
+        </div>
+
+        <button type="submit" class="btn btn-success">Lưu bài viết</button>
+        <a href="@Url.Action("Index", "AdminNews")" class="btn btn-secondary">Quay lại</a>
+    }
+</div>

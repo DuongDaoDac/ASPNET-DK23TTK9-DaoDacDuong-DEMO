@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Description = "Cung cấp 25+ dịch vụ sửa chữa nhà toàn diện từ A-Z: Điện nước, chống thấm, cơi nới không gian, nội thất thông minh. Đội ngũ thợ lành nghề 10+ năm kinh nghiệm.";
+}
+
+<div class="container py-8">
+    <!-- Hero Section -->
+    <div class="text-center mb-10 bg-blue-50 rounded-xl p-8 shadow-lg">
+        <h1 class="text-4xl font-bold text-blue-800 mb-4">🛠️ 25+ Dịch Vụ Sửa Nhà Chuyên Sâu</h1>
+        <p class="text-lg text-gray-600">Giải pháp trọn gói - Bảo hành 2 năm - Thi công đúng tiến độ</p>
+        <div class="mt-6">
+            <a href="#contact" class="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all">
+                📞 Nhận báo giá ngay
+            </a>
+        </div>
+    </div>
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dịch vụ 1 -->
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
+            <div class="flex items-center mb-4">
+                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-tools text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold">Sửa Chữa Điện Dân Dụng</h3>
+            </div>
+            <p class="text-gray-600 mb-4">Khắc phục mọi sự cố điện: chập cháy, đường dây, ổ cắm âm tường...</p>
+            <ul class="list-checkmark text-blue-600 space-y-2">
+                <li>Bảo hành 3 năm</li>
+                <li>Thiết bị chuẩn PCCC</li>
+                <li>Hỗ trợ 24/7</li>
+            </ul>
+        </div>
+
+        <!-- Dịch vụ 2 -->
+        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all">
+            <div class="flex items-center mb-4">
+                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                    <i class="fas fa-faucet text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold">Hệ Thống Nước & PCCC</h3>
+            </div>
+            <p class="text-gray-600 mb-4">Thi công đường ống, bơm nước, chống tràn, hệ thống phun tự động</p>
+            <ul class="list-checkmark text-green-600 space-y-2">
+                <li>Vật liệu Inox/HDPE</li>
+                <li>Test áp lực miễn phí</li>
+                <li>Miễn phí thông tắc</li>
+            </ul>
+        </div>
+
+        <!-- Thêm các dịch vụ khác với cấu trúc tương tự -->
+        <!-- Dịch vụ 3-20 -->
+        <!-- ... (Code mẫu cho các dịch vụ khác) ... -->
+    </div>
+
+    <!-- Danh sách 20+ dịch vụ gợi ý -->
+    <div class="mt-12 bg-gray-50 p-8 rounded-xl">
+        <h2 class="text-2xl font-bold mb-6 text-center">🏡 Trọn Gói Dịch Vụ Nhà Cửa</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="flex items-center">
+                <i class="fas fa-brush text-purple-500 mr-3"></i>
+                Sơn nhà & Chống thấm
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-couch text-orange-500 mr-3"></i>
+                Thiết kế Nội thất
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-tv text-blue-500 mr-3"></i>
+                Lắp TV & Thiết bị thông minh
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-tree text-green-500 mr-3"></i>
+                Cải tạo Sân vườn
+            </div>
+            <!-- Thêm các dịch vụ khác -->
+            <div class="flex items-center">
+                <i class="fas fa-wind text-teal-500 mr-3"></i>
+                Điều hòa & Thông gió
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-lock text-red-500 mr-3"></i>
+                Khoá & An ninh
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-lightbulb text-yellow-500 mr-3"></i>
+                Đèn trang trí
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-shower text-pink-500 mr-3"></i>
+                Phòng tắm cao cấp
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div id="contact" class="mt-12 text-center bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-2xl">
+        <h2 class="text-3xl font-bold mb-4">📩 Liên hệ ngay để được tư vấn!</h2>
+        <p class="mb-6 text-lg">Miễn phí khảo sát & Báo giá trong 2 giờ</p>
+        <div class="flex justify-center gap-4">
+            <a href="tel:0947678096" class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-gray-100">
+                <i class="fas fa-phone mr-2"></i>Gọi ngay
+            </a>
+            <a href="@Url.Action("Index", "Contact")" class="bg-white text-blue-600 px-6 py-3 rounded-full hover:bg-gray-100">
+                <i class="fas fa-comments mr-2"></i>Chat Zalo
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .list-checkmark li {
+        position: relative;
+        padding-left: 1.5em;
+    }
+
+        .list-checkmark li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: currentColor;
+            font-weight: 900;
+        }
+</style>

@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Chỉnh sửa giao diện";
+}
+
+<div class="container mx-auto py-8">
+    <h2 class="text-2xl font-bold mb-4 text-gray-800">Chỉnh sửa giao diện</h2>
+    <form method="post" action="@Url.Action("SaveInterfaceChanges", "Admin")" class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-8">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-4">
+            <label for="Title" class="block text-gray-700 text-sm font-bold mb-2">Tiêu đề website:</label>
+            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="Title" name="Title" value="@ViewBag.WebsiteTitle" />
+        </div>
+
+        <div class="mb-4">
+            <label for="BannerUrl" class="block text-gray-700 text-sm font-bold mb-2">Banner (URL ảnh):</label>
+            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="BannerUrl" name="BannerUrl" value="@ViewBag.BannerUrl" />
+        </div>
+
+        <div class="flex items-center justify-between">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Lưu giao diện
+            </button>
+        </div>
+    </form>
+</div>

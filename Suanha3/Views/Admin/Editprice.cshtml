@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2 class="text-xl font-bold mb-3">Chỉnh sửa giá dịch vụ</h2>
+    <form method="post" action="/Admin/EditPrice">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group">
+            <label>Dịch vụ</label>
+            <input type="text" class="form-control" name="Name" value="@Model.Name" readonly />
+        </div>
+        <div class="form-group">
+            <label>Giá (VNĐ)</label>
+            <input type="number" class="form-control" name="Price" value="@Model.Price" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </form>
+</div>
+<div>

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tin tức sửa nhà</h2>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <strong>@item.Title</strong> - @item.Category (@item.CreatedDate)
+            <br />
+            @Html.ActionLink("Xem chi tiết", "Details", new { id = item.Id })
+        </li>
+    }
+</ul>
